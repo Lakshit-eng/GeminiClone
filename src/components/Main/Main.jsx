@@ -7,8 +7,12 @@ const Main = () => {
   const { onSent, recentPrompt, showResult, loading, resultData, setInput, input } = useContext(Context);
 
   // Function to render response with bold formatting and line breaks
-  
-
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      onSent();
+    }
+}
+   
 
   return (
     <div className="main">
@@ -72,6 +76,7 @@ const Main = () => {
           <div className="search-box">
             <input 
               onChange={(e) => { setInput(e.target.value); }} 
+              onKeyDown={handleKeyDown}
               value={input} 
               type="text" 
               placeholder="Enter a prompt here" 
